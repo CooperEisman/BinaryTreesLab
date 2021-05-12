@@ -4,12 +4,10 @@ public class Node<Key extends Comparable<Key>, Value> {
     private Value value;
     private Node<Key, Value> left;
     private Node<Key, Value> right;
-    private int size;
 
-    public Node(Key key, Value value, int size) {
+    public Node(Key key, Value value) {
         this.key = key;
         this.value = value;
-        this.size = size;
     }
 
     @Override
@@ -52,11 +50,11 @@ public class Node<Key extends Comparable<Key>, Value> {
         this.right = right;
     }
 
-    public int getSize() {
-        return size;
+    public boolean hasRight() {
+        return (getRight()!=null);
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public boolean hasLeft() {
+        return (getLeft()!=null);
     }
 }
