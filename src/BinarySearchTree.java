@@ -28,30 +28,12 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     //sets left/right or creates a new node appropriately, returns the
     //modified node n
     private Node<Key, Value> put(Node<Key, Value> n, Key key, Value val) {
-        if(!isEmpty()) {
-            Node currentNode = root;
-            while (currentNode.getSize() > 0) {
-                if(Integer.parseInt(currentNode.getKey().toString()) > Integer.parseInt(n.getKey().toString())) {
-                    if(currentNode.getLeft()!=null) {
-                        currentNode = currentNode.getLeft();
-                    } else {
-                        currentNode.setRight(new Node(key,val,0));
-                        currentNode.setSize(currentNode.getSize() + 1);
-                        return currentNode.getRight();
-                    }
-                } else {
-                    if(currentNode.getRight()!=null) {
-                        currentNode = currentNode.getRight();
-                    } else {
-                        currentNode.setRight(new Node(key,val,0));
-                        currentNode.setSize(currentNode.getSize() + 1);
-                        return currentNode.getRight();
-                    }
-                }
-            }
+        if(n.) {
+
         }
-        root = n;
-        return n;
+        if(n.getKey().compareTo(key) > 0) {
+
+        }
     }
 
     //recursive get wrapper
@@ -63,11 +45,11 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     //recursive get
     //returns null if the key does not exist
     private Value get(Node<Key, Value> n, Key key) {
-
+        return n.getValue();
     }
 
     public boolean contains(Key key) {
-
+        return true;
     }
 
     public Value remove(Key key) {
@@ -100,7 +82,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
 
     //returns the node at the left most left branch of n
     private Node<Key, Value> min(Node<Key, Value> n) {
-
+        return n;
     }
 
     public Key max() {
@@ -109,7 +91,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
 
     //returns the node at the right most right branch of n
     private Node<Key, Value> max(Node<Key, Value> n) {
-
+        return n;
     }
 
     public String toString() {
