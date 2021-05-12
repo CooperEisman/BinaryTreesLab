@@ -3,37 +3,65 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     public Node<Key, Value> root;
 
     public BinarySearchTree() {
-        root = new Node<>(null,null,0);
+        root = null;
     }
 
     public int size() {
+        if(root==null) {
+            return 0;
+        }
         return size(root);
     }
 
     //use Node's recursive size
     private int size(Node x) {
-        return x.getSize();
+        int out = x.getSize();
+        if(x.getLeft() !=null) {
+            out += size(x.getLeft());
+        }
+        if(x.getRight() !=null) {
+            out += size(x.getRight());
+        }
+        return out;
     }
 
     public boolean isEmpty() {
-        return root.getSize() == 0;
+        return size() == 0;
     }
 
     //recursive put wrapper
     public void put(Key key, Value value) {
-        root = put(root, key, value);
+        if(isEmpty()) {
+            root = new Node<Key, Value>(key,value,0);
+        }
+        put(root, key, value);
     }
 
     //recursive put
     //sets left/right or creates a new node appropriately, returns the
     //modified node n
     private Node<Key, Value> put(Node<Key, Value> n, Key key, Value val) {
-        if(n.) {
-
-        }
         if(n.getKey().compareTo(key) > 0) {
-
+            if (n.getRight()!=null) {
+                put(n.getRight(),key,val);
+            } else {
+                n.setRight(new Node<Key,Value>(key,val,0));
+                n.setSize(n.getSize()+1);
+                return n.getRight();
+            }
+        } else if (n.getKey().compareTo(key) < 0) {
+            if (n.getLeft()!=null) {
+                put(n.getLeft(),key,val);
+            } else {
+                n.setLeft(new Node<Key,Value>(key,val,0));
+                n.setSize(n.getSize()+1);
+                return n.getLeft();
+            }
+        } else {
+            n.setValue(val);
+            return n;
         }
+        return root;
     }
 
     //recursive get wrapper
